@@ -1,0 +1,1 @@
+This repository contains projects done in "Introduction to React Router 6" course on scrimba.com
