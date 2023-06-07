@@ -1,13 +1,75 @@
-body {
+html, body {
+  width: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.navbar {
+  height: 112px;
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFF7ED; 
+  padding: 0 30px;
+}
+
+.vanlife-link {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25.3531px;
+  line-height: 40px;
+  /* identical to box height, or 159% */
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+}
+
+.end-nav-container {
+  display: flex;
+  gap: 20px;
+}
+
+.end-nav-container > a{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+
+  /* identical to box height, or 143% */
+  text-align: right;
+
+  color: #4D4D4D;
+  text-decoration: none;
+}
+
+.footer {
+  height: 75px;
+  /* width: 100%; */
+  background-color: #252525;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #AAAAAA;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+
+  /* or 164% */
+  text-align: center;
 }
