@@ -1,7 +1,38 @@
 import React  from "react";
+import FilterButton from "../components/FilterButton";
+import VanCard from "../components/VanCard";
 
 export default function Vans() {
+    const [vans, setVans] = React.useState([])
+    React.useEffect(()=>{
+        const vans = fetch("/api/vans").then((response)=>response.json()).then((data)=>setVans(data.vans))
+    }, [])
+
+    console.log(vans)
+
     return (
-        <h1>Vans here</h1>
+        <div className="vans">
+            <h2>Explore our van options</h2>
+            <div className="filter-button-container">
+                <FilterButton name="Simple"/>
+                <FilterButton name="Luxury"/>
+                <FilterButton name="Rugged"/>
+                <p>Clear filters</p>
+            </div>
+            <div className="cards-container">
+                {vans.map((van)=>{
+                    return (
+                        <VanCard
+                            key={van.id}
+                            name={van.name}
+                            price={van.price}
+                            imageUrl={van.imageUrl}
+                            type={van.type}
+                        />
+                    )
+                })}
+
+            </div>
+        </div>
     )
 }
