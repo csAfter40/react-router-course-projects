@@ -11,7 +11,6 @@ html, body {
 }
 
 #root {
-  position: relative;
   height: 100%;
 }
 
@@ -22,7 +21,6 @@ code {
 
 .navbar {
   height: 112px;
-  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +34,6 @@ code {
   font-weight: 900;
   font-size: 25.3531px;
   line-height: 40px;
-  /* identical to box height, or 159% */
   display: flex;
   align-items: center;
   color: #000000;
@@ -54,10 +51,7 @@ code {
   font-weight: 600;
   font-size: 16px;
   line-height: 23px;
-
-  /* identical to box height, or 143% */
   text-align: right;
-
   color: #4D4D4D;
   text-decoration: none;
 }
@@ -110,12 +104,86 @@ code {
   color: white;
 }
 
+.about-pic {
+  width: 100%;
+  height: 240px;
+  background-image: url("./images/about-pic.png");
+  background-size: cover;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #FFF7ED;
+}
+
+.about-slogan {
+  background-color: #FFCC8D;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.about-content > h2 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #161616;
+}
+
+.about-content > p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #161616;
+}
+
+.about-slogan > p {
+  margin: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #161616;
+}
+
+.about-slogan-link {
+  text-decoration: none;
+}
+
+.about-vans-button {
+  background-color: #161616;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15.9462px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin: 20px 0;
+}
+
 .footer {
-  position: absolute;
   bottom: 0px;
   width: 100%;
   height: 75px;
-  /* width: 100%; */
   background-color: #252525;
   display: flex;
   justify-content: center;
@@ -126,7 +194,5 @@ code {
   font-weight: 500;
   font-size: 14px;
   line-height: 23px;
-
-  /* or 164% */
   text-align: center;
 }
