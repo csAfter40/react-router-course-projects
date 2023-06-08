@@ -7,6 +7,12 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Inter', sans-serif;
+  height: 100%;
+}
+
+#root {
+  position: relative;
+  height: 100%;
 }
 
 code {
@@ -56,7 +62,58 @@ code {
   text-decoration: none;
 }
 
+.home {
+  background-image: url("./images/home-bg.png");
+  background-size: cover;
+  background-position: center center;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+}
+
+.home > h2 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 42px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.home > p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.home-link {
+  width: 100%;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.home-vans-button {
+  background-color: #FF8C38;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white;
+}
+
 .footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
   height: 75px;
   /* width: 100%; */
   background-color: #252525;
