@@ -1,12 +1,12 @@
 import React  from "react";
-import FilterButton from "../components/FilterButton";
-import VanCard from "../components/VanCard";
+import FilterButton from "../../components/FilterButton"
+import VanCard from "../../components/VanCard";
 import { Link } from "react-router-dom";
 
 export default function Vans() {
     const [vans, setVans] = React.useState([])
     React.useEffect(()=>{
-        const vans = fetch("/api/vans").then((response)=>response.json()).then((data)=>setVans(data.vans))
+        fetch("/api/vans").then((response)=>response.json()).then((data)=>setVans(data.vans))
     }, [])
 
     console.log(vans)
@@ -21,9 +21,9 @@ export default function Vans() {
                 <p>Clear filters</p>
             </div>
             <div className="cards-container">
-                {vans.map((van)=>{
+                {vans.map((van, i)=>{
                     return (
-                        <Link className="vans-detail-link" to={`/vans/${van.id}`}>
+                        <Link key={i} className="vans-detail-link" to={`/vans/${van.id}`}>
                             <VanCard
                                 key={van.id}
                                 name={van.name}
