@@ -56,6 +56,11 @@ code {
   text-decoration: none;
 }
 
+.end-nav-container > a.active{
+  text-decoration-line: underline;
+  color: #161616;
+}
+
 .home {
   background-image: url("./images/home-bg.png");
   background-size: cover;
@@ -389,4 +394,32 @@ code {
   align-items: center;
   text-align: center;
   color: #FFFFFF;
+}
+
+.host-nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.host-nav > a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  
+  /* or 127% */
+  display: flex;
+  align-items: center;
+  
+  color: #4D4D4D;
+  text-decoration: none;
+}
+
+.host-nav > a.active {
+  text-decoration-line: underline;
+  color: #161616;
 }
