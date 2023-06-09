@@ -1,6 +1,7 @@
 import React  from "react";
 import FilterButton from "../components/FilterButton";
 import VanCard from "../components/VanCard";
+import { Link } from "react-router-dom";
 
 export default function Vans() {
     const [vans, setVans] = React.useState([])
@@ -22,13 +23,15 @@ export default function Vans() {
             <div className="cards-container">
                 {vans.map((van)=>{
                     return (
-                        <VanCard
-                            key={van.id}
-                            name={van.name}
-                            price={van.price}
-                            imageUrl={van.imageUrl}
-                            type={van.type}
-                        />
+                        <Link className="vans-detail-link" to={`/vans/${van.id}`}>
+                            <VanCard
+                                key={van.id}
+                                name={van.name}
+                                price={van.price}
+                                imageUrl={van.imageUrl}
+                                type={van.type}
+                            />
+                        </Link>
                     )
                 })}
 
