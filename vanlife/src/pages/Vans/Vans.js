@@ -23,7 +23,7 @@ export default function Vans() {
             <div className="cards-container">
                 {vans.map((van, i)=>{
                     return (
-                        <Link key={i} className="vans-detail-link" to={`/vans/${van.id}`}>
+                        <Link key={i} className="vans-detail-link" to={van.id}>
                             <VanCard
                                 key={van.id}
                                 name={van.name}

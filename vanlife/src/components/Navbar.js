@@ -6,9 +6,9 @@ export default function Navbar(){
         <nav className="navbar">
             <Link className="vanlife-link" to={"/"}>#VANLIFE</Link>
             <div className="end-nav-container">
-                <NavLink to={"/host"}>Host</NavLink>
-                <NavLink to={"/about"}>About</NavLink>
-                <NavLink to={"/vans"}>Vans</NavLink>
+                <NavLink to={"host"}>Host</NavLink>
+                <NavLink to={"about"}>About</NavLink>
+                <NavLink to={"vans"}>Vans</NavLink>
             </div>
         </nav>
     )

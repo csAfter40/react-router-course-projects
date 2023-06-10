@@ -31,9 +31,9 @@ export default function HostVanDetailLayout() {
                         </div>
                     </div>
                     <nav className="host-vans-nav">
-                        <NavLink to={`/host/vans/${hostVan.id}`} end>Details</NavLink>
-                        <NavLink to={`/host/vans/${hostVan.id}/pricing`}>Pricing</NavLink>
-                        <NavLink to={`/host/vans/${hostVan.id}/photos`}>Photos</NavLink>
+                        <NavLink to="." end>Details</NavLink> {/* link to current directory*/}
+                        <NavLink to="pricing">Pricing</NavLink>
+                        <NavLink to="photos">Photos</NavLink>
                     </nav>
                     <Outlet
                         context={{hostVan}}
