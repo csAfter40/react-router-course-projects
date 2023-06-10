@@ -6,6 +6,7 @@ export default function HostNav() {
         <div className="host-nav">
             <NavLink to="/host" end>Dashboard</NavLink>
             <NavLink to="/host/income">Income</NavLink>
+            <NavLink to="/host/vans">Vans</NavLink>
             <NavLink to="/host/review">Review</NavLink>
         </div>
     )
