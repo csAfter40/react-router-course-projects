@@ -1,4 +1,5 @@
 import React from "react";
+import VanTypeBadge from "./VanTypeBadge";
 
 export default function VanCard({imageUrl, name, price, type}) {
     return (
@@ -11,9 +12,7 @@ export default function VanCard({imageUrl, name, price, type}) {
                     <p>/day</p>
                 </div>
             </div>
-            <div className={`van-type ${type}`}>
-               <p>{type}</p> 
-            </div>
+            <VanTypeBadge type={type}/>
         </div>
     )
 }
