@@ -12,13 +12,13 @@ export default function HostVanDetailLayout() {
             .then(data => {
                 data.vans.length && setHostVan(data.vans[0]);
                 setLoading(false)
-            })
-    },[])
+            });
+    },[params.id])
     return (
         <div className="host-van-detail-layout-container">
             {loading ? <h1>Loading...</h1> :
             hostVan ? <div className="host-van-detail-layout">
-                <Link to={"/host/vans"} className="back-to-host-vans-link">
+                <Link to={".."} className="back-to-host-vans-link">
                     Back to all vans
                 </Link>
                 <div className="host-van-detail-container">
