@@ -68,12 +68,20 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
   padding: 20px;
 }
 
-.home > h2 {
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 800px;
+}
+
+.home-content > h2 {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
@@ -83,7 +91,7 @@ code {
   margin: 0;
 }
 
-.home > p {
+.home-content > p {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
@@ -347,6 +355,11 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+}
+
+.left-arrow{
+  font-weight: 700;
+  font-size: large;
 }
 
 .back-to-vans {
