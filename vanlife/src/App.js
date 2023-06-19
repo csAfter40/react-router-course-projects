@@ -14,6 +14,7 @@ import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanDetailLayout from "./components/HostVanDetailLayout";
+import Page404 from "./pages/Page404";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               </Route>
             </Route>
           </Route>
+          <Route path="*" element={<Page404/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

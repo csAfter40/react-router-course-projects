@@ -19,7 +19,7 @@ code {
 }
 
 .navbar {
-  height: 90px;
+  height: var(--navbar-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,6 +116,7 @@ code {
   color: white;
 }
 
+/* About Page */
 .about-pic {
   width: 100%;
   height: 240px;
@@ -194,7 +195,7 @@ code {
 
 .footer {
   width: 100%;
-  height: 75px;
+  height: var(--footer-height);
   background-color: #252525;
   display: flex;
   justify-content: center;
@@ -209,6 +210,7 @@ code {
   margin-top: auto
 }
 
+/* Vans Page */
 .van-card {
   width: 150px;
   display: flex;
@@ -444,6 +446,8 @@ code {
 }
 
 .site-wrapper {
+  --navbar-height: 90px;
+  --footer-height: 75px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -612,4 +616,35 @@ code {
 .host-van-pricing > h2 > span{
   font-weight: 500;
   font-size:medium;
+}
+
+.page-404 {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height: calc(100vh - var(--navbar-height) - var(--footer-height));
+}
+
+.page-404-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  height: 100%;
+}
+
+.page-404-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  width: 100%;
+  height: 40px;
+  color: #FFEAD0;
+  text-decoration: none;
+  border-radius: 5px;
 }

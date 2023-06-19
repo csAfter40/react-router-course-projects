@@ -2,15 +2,29 @@ import React  from "react";
 import FilterButton from "../../components/FilterButton"
 import VanCard from "../../components/VanCard";
 import { Link, useSearchParams } from "react-router-dom";
+import { getVans } from "../../api";
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [vans, setVans] = React.useState([])
+    const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(null);
     const typeFilter = searchParams.get("type");
     React.useEffect(()=>{
-        fetch("/api/vans").then((response)=>response.json()).then((data)=>setVans(data.vans))
+        async function loadVans(){
+            try {
+                const vansData = await getVans("/api/vans");
+                console.log(vansData)
+                setVans(vansData);
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        loadVans();
     }, [])
-
+    console.log(error)
     const filteredVansArray = typeFilter 
         ? vans.filter(van=>van.type===typeFilter)
         : vans;
@@ -44,24 +58,28 @@ export default function Vans() {
                 {typeFilter && <p onClick={()=>editSearchParams("type", null)}>Clear filters</p>}
             </div>
             <div className="cards-container">
-                {filteredVansArray.map((van, i)=>{
-                    return (
-                        <Link 
-                            key={i} 
-                            className="vans-detail-link" 
-                            to={van.id}
-                            state={{search: searchParams}}
-                        >
-                            <VanCard
-                                key={van.id}
-                                name={van.name}
-                                price={van.price}
-                                imageUrl={van.imageUrl}
-                                type={van.type}
-                            />
-                        </Link>
-                    )
-                })}
+                {loading 
+                    ? <h2>Loading...</h2> 
+                    : error 
+                        ? <h2>{error.message}</h2> 
+                        : filteredVansArray.map((van, i)=>{
+                            return (
+                                <Link 
+                                    key={i} 
+                                    className="vans-detail-link" 
+                                    to={van.id}
+                                    state={{search: searchParams}}
+                                >
+                                    <VanCard
+                                        key={van.id}
+                                        name={van.name}
+                                        price={van.price}
+                                        imageUrl={van.imageUrl}
+                                        type={van.type}
+                                    />
+                                </Link>
+                            )
+                        })}
 
             </div>
         </div>
