@@ -648,3 +648,11 @@ code {
   text-decoration: none;
   border-radius: 5px;
 }
+
+.error-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height: calc(100vh - var(--navbar-height) - var(--footer-height));
+}
