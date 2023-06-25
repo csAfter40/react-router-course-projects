@@ -18,6 +18,7 @@ import HostVans from "./pages/Host/HostVans";
 import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import HostVanPricing from "./pages/Host/HostVanPricing";
+import Login from "./pages/Login";
 import HostVanDetailLayout from "./components/HostVanDetailLayout";
 import Page404 from "./pages/Page404";
 import ErrorElement from "./components/ErrorElement";
@@ -25,6 +26,7 @@ import ErrorElement from "./components/ErrorElement";
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<Home />}/>
+    <Route path="login" element={<Login />}/>
     <Route path="about" element={<About />}/>
     <Route path="vans">
       <Route 
