@@ -1,23 +1,17 @@
 import React from "react";
-import { Outlet, Link, NavLink, useParams } from "react-router-dom";
+import { Outlet, Link, NavLink, useLoaderData } from "react-router-dom";
 import VanTypeBadge from "./VanTypeBadge";
+import { getVans } from "../api";
+
+export function loader({params}){
+    return getVans(`/api/host/vans/${params.id}`);
+}
 
 export default function HostVanDetailLayout() {
-    const params = useParams()
-    const [hostVan, setHostVan] = React.useState(null)
-    const [loading, setLoading] = React.useState(true)
-    React.useEffect(()=>{
-        fetch(`/api/host/vans/${params.id}`)
-            .then(res => res.json())
-            .then(data => {
-                data.vans.length && setHostVan(data.vans[0]);
-                setLoading(false)
-            });
-    },[params.id])
+    const hostVan = useLoaderData()[0]
     return (
         <div className="host-van-detail-layout-container">
-            {loading ? <h1>Loading...</h1> :
-            hostVan ? <div className="host-van-detail-layout">
+            <div className="host-van-detail-layout">
                 <Link to={".."} className="back-to-host-vans-link">
                     Back to all vans
                 </Link>
@@ -39,9 +33,7 @@ export default function HostVanDetailLayout() {
                         context={{hostVan}}
                     />
                 </div>
-            </div>: 
-            <h2>Van not found!</h2>
-            }
+            </div>
         </div>
     )
 }

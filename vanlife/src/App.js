@@ -14,12 +14,12 @@ import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Review from "./pages/Host/Review";
 import HostLayout from "./components/HostLayout";
-import HostVans from "./pages/Host/HostVans";
+import HostVans, {loader as hostVansLoader} from "./pages/Host/HostVans";
 import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import Login from "./pages/Login";
-import HostVanDetailLayout from "./components/HostVanDetailLayout";
+import HostVanDetailLayout, {loader as hostVanDetailLayoutLoader} from "./components/HostVanDetailLayout";
 import Page404 from "./pages/Page404";
 import ErrorElement from "./components/ErrorElement";
 
@@ -46,7 +46,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       path="host" 
       element={<HostLayout />}
       loader={async ()=>{
-        return null
+        return null;
       }}
     >
       <Route 
@@ -72,23 +72,18 @@ const router = createBrowserRouter(createRoutesFromElements(
       />
       <Route 
         path="vans"
-        loader={async ()=>{
-          return null
-        }}
       >
         <Route 
           index 
           element={<HostVans />}
-          loader={async ()=>{
-            return null
-          }}
+          loader={hostVansLoader}
+          errorElement={<ErrorElement />}
         />
         <Route 
           path=":id" 
           element={<HostVanDetailLayout />}
-          loader={async ()=>{
-            return null
-          }}
+          loader={hostVanDetailLayoutLoader}
+          errorElement={<ErrorElement />}
         >
           <Route 
             index 

@@ -1,22 +1,17 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 import HostVansCard from "../../components/HostVansCard";
 import { getVans } from "../../api";
 
+export function loader() {
+    return getVans("/api/host/vans");
+}
+
 export default function HostVans() {
-    const [hostVans, setHostVans] = React.useState(null)
-    const [loading, setLoading] = React.useState(true);
-    React.useEffect(()=>{
-        async function loadVans(){
-            const data = await getVans("/api/host/vans");
-            console.log(data);
-            setHostVans(data);
-            setLoading(false);
-        }
-        loadVans();
-    },[])
+    const hostVans = useLoaderData()
     return (
         <div className="host-vans">
-            {loading ? <h1>Loading...</h1> : <div className="host-vans-container">
+            <div className="host-vans-container">
                 {hostVans.map((van) => {
                     return (
                         <HostVansCard
@@ -25,7 +20,7 @@ export default function HostVans() {
                         />
                     )
                 })}
-            </div>}
+            </div>
         </div>
     )
 }
