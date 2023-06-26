@@ -2,12 +2,14 @@ import React from "react";
 import { Outlet, Link, NavLink, useLoaderData } from "react-router-dom";
 import VanTypeBadge from "./VanTypeBadge";
 import { getVans } from "../api";
+import { requireAuth } from "../utils";
 
-export function loader({params}){
-    return getVans(`/api/host/vans/${params.id}`);
+export async function loader({params}){
+    return await requireAuth() || getVans(`/api/host/vans/${params.id}`);
 }
 
 export default function HostVanDetailLayout() {
+    console.log(useLoaderData())
     const hostVan = useLoaderData()[0]
     return (
         <div className="host-van-detail-layout-container">
