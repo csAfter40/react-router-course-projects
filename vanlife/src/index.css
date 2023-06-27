@@ -714,3 +714,9 @@ code {
   width:100%;
   height: calc(100vh - var(--navbar-height) - var(--footer-height));
 }
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 0;
+}

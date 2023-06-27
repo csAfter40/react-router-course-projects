@@ -1,6 +1,18 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export function loader({ request }) {
+    const url = new URL(request.url);
+    return url.searchParams.get("message");
+}
 
 export default function Login() {
+    const message = useLoaderData()
+    React.useEffect(() => {
+        message && toast(message);
+    }, [])
     const [loginFormData, setLoginFormData] = React.useState({email:"", password:""});
     function handleChange (event) {
         setLoginFormData((prevData)=>{
@@ -15,6 +27,7 @@ export default function Login() {
     }
     return(
         <div className="login">
+            <ToastContainer/>
             <form className="login-form" action="">
                 <h1>Sign into your account</h1>
                 <input 
