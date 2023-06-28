@@ -2,7 +2,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-  Route
+  Route,
 } from "react-router-dom"
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -19,28 +19,22 @@ import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import Login, { loader as loginLoader } from "./pages/Login";
+import Logout from "./pages/Logout";
 import HostVanDetailLayout, {loader as hostVanDetailLayoutLoader} from "./components/HostVanDetailLayout";
 import Page404 from "./pages/Page404";
 import ErrorElement from "./components/ErrorElement";
 import { requireAuth } from "./utils";
-
-// const requireAuthLoader = async () => {
-//   const isLoggedIn = false;
-//   if(!isLoggedIn) {
-    
-//     let response = redirect("/login");
-//     response.body = true;
-//     console.log(response)
-//     throw response;
-//   } else {
-//     return null
-//   }
-// }
+import { UserProvider } from "./components/UserProvider";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<Home />}/>
-    <Route path="login" element={<Login />} loader={loginLoader}/>
+    <Route 
+      path="login" 
+      element={<Login />} 
+      loader={loginLoader}
+    />
+    <Route path="logout" element={<Logout/>}/>
     <Route path="about" element={<About />}/>
     <Route path="vans">
       <Route 
@@ -114,7 +108,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 function App() {
   return (
-    <RouterProvider router={router}/>
+    <UserProvider>
+      <RouterProvider router={router}/>
+    </UserProvider>
   );
 }
 

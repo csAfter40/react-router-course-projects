@@ -1,5 +1,9 @@
 import { createServer, Model, Response } from "miragejs"
 
+function getUserId(){
+    const user = JSON.parse(localStorage.getItem("vanlifeIsLoggedIn")).user;
+    return user.id;
+}
 
 createServer({
     models: {
@@ -34,13 +38,13 @@ createServer({
 
         this.get("/host/vans", (schema, request) => {
             // Hard-code the hostId for now
-            return schema.vans.where({ hostId: "123" })
+            return schema.vans.where({ hostId: getUserId() })
         })
 
         this.get("/host/vans/:id", (schema, request) => {
             // Hard-code the hostId for now
             const id = request.params.id
-            return schema.vans.where({ id, hostId: "123" })
+            return schema.vans.where({ id, hostId: getUserId() })
         })
         this.post("/login", (schema, request) => {
             const { email, password } = JSON.parse(request.requestBody)

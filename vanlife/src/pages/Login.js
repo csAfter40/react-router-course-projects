@@ -1,8 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate, Form } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginUser } from "../api";
+import { UserContext } from "../components/UserProvider";
 
 export function loader({ request }) {
     const url = new URL(request.url);
@@ -11,53 +12,58 @@ export function loader({ request }) {
 
 export default function Login() {
     const message = useLoaderData()
-    const [loginFormData, setLoginFormData] = React.useState({email:"", password:""});
+    const [formData, setFormData] = React.useState({email:"", password:""})
     const [status, setStatus] = React.useState("idle");
     const [error, setError] = React.useState(null);
-    
+    const navigate = useNavigate();
+    const {setUser} = React.useContext(UserContext)
+
     React.useEffect(() => {
         message && toast(message);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     React.useEffect(()=>{
         error && toast(error.message)
     }, [error])
 
-    function handleChange (event) {
-        setLoginFormData((prevData)=>{
-            const newData = {...prevData};
-            newData[event.target.name] = event.target.value;
-            return newData
-        })
-    }
     function handleSubmit(event) {
+        event.preventDefault();
         setStatus("submitting")
         setError(null)
-        event.preventDefault();
-        loginUser(loginFormData)
+        loginUser(formData)
             .then(data=>{
-                toast("You successfully logged in")
-                console.log("data", data)
+                setUser(data);
+                navigate("/about", {replace: true});
             }).catch(err=>{
                 setError(err);
-                console.log("error", err);
             }).finally(()=>setStatus("idle"))
     }
+
+    function handleChange(event) {
+        const name = event.target.name
+        const value = event.target.value
+        setFormData(prevData => {
+            return {...prevData, [name]:value}
+        })
+    }
+    
+
     return(
         <div className="login">
             <ToastContainer autoClose={3000}/>
-            <form className="login-form" action="">
+            <Form className="login-form" method="post">
                 <h1>Sign into your account</h1>
                 <input 
+                    onChange={handleChange}
                     type="email" 
                     name="email"
-                    onChange={handleChange}
                     placeholder="Email address"
-                />
+                    />
                 <input 
+                    onChange={handleChange}
                     type="password"
                     name="password"
-                    onChange={handleChange} 
                     placeholder="Password"
                 />
                 <button 
@@ -66,7 +72,7 @@ export default function Login() {
                 >
                     {status === "submitting" ? "Logging in.." : "Log in"}
                 </button>
-            </form>
+            </Form>
             <h4>Don't have an account? <span style={{"color": "#ff8c38"}}>Create one now</span></h4>
         </div>
     )
