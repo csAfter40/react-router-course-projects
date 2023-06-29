@@ -4,8 +4,8 @@ import HostVansCard from "../../components/HostVansCard";
 import { getVans } from "../../api";
 import { requireAuth } from "../../utils";
 
-export async function loader() {
-    return await requireAuth() || getVans("/api/host/vans");
+export async function loader({request}) {
+    return await requireAuth(request) || getVans("/api/host/vans");
 }
 
 export default function HostVans() {

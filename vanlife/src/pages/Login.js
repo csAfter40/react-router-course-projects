@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useNavigate, Form } from "react-router-dom";
+import { useLoaderData, useNavigate, Form, useSearchParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginUser } from "../api";
@@ -17,6 +17,8 @@ export default function Login() {
     const [error, setError] = React.useState(null);
     const navigate = useNavigate();
     const {user, setUser} = React.useContext(UserContext)
+    const [searchParams, setSearchParams] = useSearchParams()
+    const nextPath = searchParams.get("next")
 
     React.useEffect(() => {
         message && toast(message);
@@ -29,7 +31,7 @@ export default function Login() {
 
     React.useEffect(()=>{
         setTimeout(() => {
-            user && navigate("/host", {replace: true});
+            user && navigate(nextPath, {replace: true});
         }, 10);
     }, [user])
 

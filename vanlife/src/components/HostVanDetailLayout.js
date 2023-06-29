@@ -4,8 +4,8 @@ import VanTypeBadge from "./VanTypeBadge";
 import { getVans } from "../api";
 import { requireAuth } from "../utils";
 
-export async function loader({params}){
-    return await requireAuth() || getVans(`/api/host/vans/${params.id}`);
+export async function loader({request, params}){
+    return await requireAuth(request) || getVans(`/api/host/vans/${params.id}`);
 }
 
 export default function HostVanDetailLayout() {
