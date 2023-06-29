@@ -16,7 +16,7 @@ export default function Login() {
     const [status, setStatus] = React.useState("idle");
     const [error, setError] = React.useState(null);
     const navigate = useNavigate();
-    const {setUser} = React.useContext(UserContext)
+    const {user, setUser} = React.useContext(UserContext)
 
     React.useEffect(() => {
         message && toast(message);
@@ -27,6 +27,12 @@ export default function Login() {
         error && toast(error.message)
     }, [error])
 
+    React.useEffect(()=>{
+        setTimeout(() => {
+            user && navigate("/host", {replace: true});
+        }, 10);
+    }, [user])
+
     function handleSubmit(event) {
         event.preventDefault();
         setStatus("submitting")
@@ -34,7 +40,6 @@ export default function Login() {
         loginUser(formData)
             .then(data=>{
                 setUser(data);
-                navigate("/about", {replace: true});
             }).catch(err=>{
                 setError(err);
             }).finally(()=>setStatus("idle"))
