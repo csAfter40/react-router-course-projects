@@ -14,3 +14,7 @@ export function requireAuth(request) {
 export function isAuthenticated() {
     return JSON.parse(localStorage.getItem("vanlifeIsLoggedIn"));
 }
+
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
