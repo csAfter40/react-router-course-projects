@@ -18,7 +18,7 @@ export default function Login() {
     const navigate = useNavigate();
     const {user, setUser} = React.useContext(UserContext)
     const [searchParams, setSearchParams] = useSearchParams()
-    const nextPath = searchParams.get("next")
+    const nextPath = searchParams.get("next") || "/host"
 
     React.useEffect(() => {
         message && toast(message);
