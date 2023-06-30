@@ -1,7 +1,7 @@
-import { sleep } from "./utils"
+// import { sleep } from "./utils"
 
 export async function getVans(path) {
-    await sleep(2000)
+    // await sleep(2000)
     const res = await fetch(path)
     if (!res.ok) {
         throw {

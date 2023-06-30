@@ -13,9 +13,6 @@ export default function Vans() {
     const loaderData = useLoaderData()
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type");
-    // const filteredVansArray = typeFilter 
-    //     ? vans.filter(van=>van.type===typeFilter)
-    //     : vans;
     
     function editSearchParams(key, value) {
         setSearchParams((prevParams) => {
@@ -27,11 +24,10 @@ export default function Vans() {
     return (
         <div className="vans">
             <h2>Explore our van options</h2>
-            <React.Suspense fallback={ <h2>Loaing Vans</h2> }>
+            <React.Suspense fallback={ <h2>Loading Vans</h2> }>
                 <Await resolve={loaderData.vans}>
                     
                     {(vans)=>{
-                        console.log(vans)
                         const filteredVansArray = typeFilter 
                             ? vans.filter(van=>van.type===typeFilter)
                             : vans;
