@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation, useLoaderData, defer, Await } from "react-router-dom";
 import { getVans } from "../../api";
+import ErrorElement from "../../components/ErrorElement";
 
 export function loader({params}){ //automatically gets the params as a parameter
     return defer({van: getVans(`/api/vans/${params.id}`)});
@@ -22,7 +23,10 @@ export default function VanDetail() {
                         <p><span className="left-arrow">&larr;</span> {`Back to ${searchParams ? searchParams.get("type") || "all" : "all"} vans`}</p>
                     </Link>
                     <React.Suspense fallback={<h3>Loading van...</h3>}>
-                        <Await resolve={dataPromise.van}>
+                        <Await 
+                            resolve={dataPromise.van}
+                            errorElement={<ErrorElement/>}
+                        >
                             {(van)=>{
                                 return (
                                     <>

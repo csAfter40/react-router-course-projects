@@ -3,6 +3,7 @@ import { useLoaderData, defer, Await } from "react-router-dom";
 import HostVansCard from "../../components/HostVansCard";
 import { getVans } from "../../api";
 import { requireAuth } from "../../utils";
+import ErrorElement from "../../components/ErrorElement";
 
 export async function loader({request}) {
     return await requireAuth(request) || defer({vans: getVans("/api/host/vans")});
@@ -12,7 +13,10 @@ export default function HostVans() {
     const dataPromise = useLoaderData()
     return (
         <React.Suspense fallback={<h2>Loading vans...</h2>}> 
-            <Await resolve={dataPromise.vans}>
+            <Await 
+                resolve={dataPromise.vans}
+                errorElement={<ErrorElement/>}
+            >
                 {(hostVans) => {
                     return (
                         <div className="host-vans">

@@ -1,8 +1,10 @@
 import React from "react";
-import { useRouteError } from "react-router-dom";
+import { useRouteError, useAsyncError } from "react-router-dom";
 
 export default function ErrorElement () {
-    const error  = useRouteError();
+    const error  = useAsyncError();
+    // const error  = useRouteError();
+    console.log(error)
     return (
         <div className="error-container">
             <h2>{error.message || "An error occured"}</h2>

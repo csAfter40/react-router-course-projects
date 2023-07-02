@@ -22,7 +22,6 @@ import Login, { loader as loginLoader } from "./pages/Login";
 import Logout from "./pages/Logout";
 import HostVanDetailLayout, {loader as hostVanDetailLayoutLoader} from "./components/HostVanDetailLayout";
 import Page404 from "./pages/Page404";
-import ErrorElement from "./components/ErrorElement";
 import { requireAuth } from "./utils";
 import { UserProvider } from "./components/UserProvider";
 
@@ -41,13 +40,11 @@ const router = createBrowserRouter(createRoutesFromElements(
         index 
         element={<Vans />} 
         loader={vansLoader}
-        errorElement={<ErrorElement/>}
       />
       <Route 
         path=":id" 
         element={<VanDetail />}
         loader={vanDetailLoader}
-        errorElement={<ErrorElement />}
       />
     </Route>
     <Route 
@@ -76,13 +73,11 @@ const router = createBrowserRouter(createRoutesFromElements(
           index 
           element={<HostVans />}
           loader={hostVansLoader}
-          errorElement={<ErrorElement />}
         />
         <Route 
           path=":id" 
           element={<HostVanDetailLayout />}
           loader={hostVanDetailLayoutLoader}
-          errorElement={<ErrorElement />}
         >
           <Route 
             index 

@@ -3,10 +3,12 @@ import FilterButton from "../../components/FilterButton"
 import VanCard from "../../components/VanCard";
 import { Link, useSearchParams, useLoaderData, defer, Await } from "react-router-dom";
 import { getVans } from "../../api";
+import ErrorElement from "../../components/ErrorElement";
 
 export function loader(){
     const vansPromise = getVans("/api/vans");
     return defer({vans: vansPromise});
+    // return getVans("/api/vans");
 }
 
 export default function Vans() {
@@ -25,7 +27,10 @@ export default function Vans() {
         <div className="vans">
             <h2>Explore our van options</h2>
             <React.Suspense fallback={ <h2>Loading Vans</h2> }>
-                <Await resolve={loaderData.vans}>
+                <Await 
+                    resolve={loaderData.vans}
+                    errorElement={<ErrorElement/>}
+                >
                     
                     {(vans)=>{
                         const filteredVansArray = typeFilter 
