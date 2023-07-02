@@ -6,7 +6,7 @@ import { getVans } from "../../api";
 import ErrorElement from "../../components/ErrorElement";
 
 export function loader(){
-    const vansPromise = getVans("/api/vans");
+    const vansPromise = getVans();
     return defer({vans: vansPromise});
     // return getVans("/api/vans");
 }

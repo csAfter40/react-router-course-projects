@@ -1,12 +1,12 @@
 import React from "react";
 import { useLoaderData, defer, Await } from "react-router-dom";
 import HostVansCard from "../../components/HostVansCard";
-import { getVans } from "../../api";
+import { getHostVans } from "../../api";
 import { requireAuth } from "../../utils";
 import ErrorElement from "../../components/ErrorElement";
 
 export async function loader({request}) {
-    return await requireAuth(request) || defer({vans: getVans("/api/host/vans")});
+    return await requireAuth(request) || defer({vans: getHostVans()});
 }
 
 export default function HostVans() {

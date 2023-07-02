@@ -4,7 +4,7 @@ import { getVans } from "../../api";
 import ErrorElement from "../../components/ErrorElement";
 
 export function loader({params}){ //automatically gets the params as a parameter
-    return defer({van: getVans(`/api/vans/${params.id}`)});
+    return defer({van: getVans(params.id)});
 }
 
 export default function VanDetail() {
